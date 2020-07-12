@@ -1,0 +1,150 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
+
+namespace Test1
+{
+    public partial class AddEvent : Form
+    {
+        Event @event = new Event();
+        public int AppID = 0;
+        public AddEvent()
+        {
+            InitializeComponent();
+           
+
+            cbColor.Items.Add("DarkBlue");
+            cbColor.Items.Add("Maroon");
+            cbColor.Items.Add("Green");
+            cbColor.Items.Add("Orange");
+            cbColor.Items.Add("Red");
+            cbColor.Items.Add("Black");
+        }
+
+        //SETTERS AND GETTERS
+        public DateTime DatePicker
+        {
+            set { dtpStartDate.Value = value; }
+            get{ return dtpStartDate.Value; }
+        }
+        public DateTime DatePicker2
+        {
+            set { dtpEndDate.Value = value; }
+            get { return dtpEndDate.Value; }
+        }
+
+        public string comboBox
+        {
+            set { cbColor.Text = value; }
+            get { return cbColor.Text; }
+        }
+
+        public string textBox
+        {
+            set { txtTitle.Text = value; }
+            get { return txtTitle.Text; }
+        }
+        
+        public int ID
+        {
+            set { AppID = value; }
+            get { return AppID; }
+        }
+        private void AddEvent_Load(object sender, EventArgs e)
+        {
+            btnDelete.Visible = AppID != 0;
+        }
+        //END OF SETTERS AND GETTERS
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtTitle.Text))
+            {
+                MessageBox.Show("Title is required!","", MessageBoxButtons.OK);
+                txtTitle.Focus();
+                return;
+            }
+            else if (String.IsNullOrEmpty(cbColor.Text)) {
+                MessageBox.Show("Color is required!", "", MessageBoxButtons.OK);
+                cbColor.Focus();
+                return;
+            }
+            else if(@event.dateValidation(dtpStartDate.Value.Date, dtpEndDate.Value.Date) == true)
+            {
+            }
+            else {
+                DialogResult dialog =MessageBox.Show("Do you want to save ?", "Confirm ?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dialog == DialogResult.Yes) { 
+                    if(AppID == 0) { 
+                        string insert = $"insert into calendar(title,color,startDate,endDate)"
+                            + "values('" + txtTitle.Text + "','" + cbColor.Text + "','" + dtpStartDate.Value.Date + "','" + dtpEndDate.Value.Date + "')";
+                
+                         //INSERT DATA
+                        if (@event.InsertUpdateData(insert))
+                        {
+                            MessageBox.Show("Data Inserted...", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            this.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Data insertion error...", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                       
+                    }
+                    else
+                    {
+                        string update = $"update calendar set title = '" + txtTitle.Text + "', color= '"+ cbColor.Text + "',startDate = '" + dtpStartDate.Value.ToShortDateString() + "',endDate = '" + dtpEndDate.Value.ToShortDateString() + "'"
+                            + " where id = '"+ AppID +"'";
+
+                        //UPDATE DATA
+                        if (@event.InsertUpdateData(update))
+                        {
+                            MessageBox.Show("Data Updated...", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            this.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Updating Data error...", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+                if(dialog == DialogResult.No)
+                {
+                   //DONOTHING
+                }
+            }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            DialogResult dialog = MessageBox.Show("Do you want to save ?", "Confirm ?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dialog == DialogResult.Yes)
+            {
+                string delete = $"delete from calendar where id='{AppID}'";
+                //UPDATE DATA
+                if (@event.InsertUpdateData(delete))
+                {
+                    MessageBox.Show("Data Deleted...", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Deleting Data error...", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,30 @@
+
+Meal Planner
+=============================
+lblMonth
+Fldays
+cmboMealList
+BtnCreateMeal
+btnGroceryList
+btnPreviousMonth
+btnNextMonth
+LblTheme
+=============================
+
+
+Grocery List Form
+=============================
+
+
+
+=============================
+
+Add Meal Form
+=============================
+BtnBack
+BtnAddImage
+BtnAddMeal
+TxtBoxIngredients
+TxtBoxRecipeInstructions
+TxtMealName
+============================
