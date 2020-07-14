@@ -52,6 +52,7 @@
             // 
             // panel2
             // 
+            this.panel2.BackColor = System.Drawing.Color.Gray;
             this.panel2.Controls.Add(this.BtnPrint);
             this.panel2.Controls.Add(this.BtnAlreadyHave);
             this.panel2.Controls.Add(this.BtnBack);
@@ -62,44 +63,49 @@
             // 
             // BtnPrint
             // 
+            this.BtnPrint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.BtnPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnPrint.Location = new System.Drawing.Point(389, 3);
             this.BtnPrint.Name = "BtnPrint";
             this.BtnPrint.Size = new System.Drawing.Size(107, 30);
             this.BtnPrint.TabIndex = 2;
             this.BtnPrint.Text = "Print";
-            this.BtnPrint.UseVisualStyleBackColor = true;
+            this.BtnPrint.UseVisualStyleBackColor = false;
             this.BtnPrint.Click += new System.EventHandler(this.BtnPrint_Click);
             // 
             // BtnAlreadyHave
             // 
+            this.BtnAlreadyHave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.BtnAlreadyHave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnAlreadyHave.Location = new System.Drawing.Point(192, 3);
             this.BtnAlreadyHave.Name = "BtnAlreadyHave";
             this.BtnAlreadyHave.Size = new System.Drawing.Size(111, 30);
             this.BtnAlreadyHave.TabIndex = 1;
             this.BtnAlreadyHave.Text = "Already Have";
-            this.BtnAlreadyHave.UseVisualStyleBackColor = true;
+            this.BtnAlreadyHave.UseVisualStyleBackColor = false;
+            this.BtnAlreadyHave.Visible = false;
             this.BtnAlreadyHave.Click += new System.EventHandler(this.BtnAlreadyHave_Click);
             // 
             // BtnBack
             // 
+            this.BtnBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.BtnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnBack.Location = new System.Drawing.Point(3, 3);
             this.BtnBack.Name = "BtnBack";
             this.BtnBack.Size = new System.Drawing.Size(107, 30);
             this.BtnBack.TabIndex = 0;
             this.BtnBack.Text = "<-- Back";
-            this.BtnBack.UseVisualStyleBackColor = true;
+            this.BtnBack.UseVisualStyleBackColor = false;
             this.BtnBack.Click += new System.EventHandler(this.BtnBack_Click);
             // 
             // Grocery_List
             // 
+            this.Grocery_List.BackColor = System.Drawing.Color.Gray;
             this.Grocery_List.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Grocery_List.FormattingEnabled = true;
             this.Grocery_List.Location = new System.Drawing.Point(3, 42);
             this.Grocery_List.Name = "Grocery_List";
-            this.Grocery_List.Size = new System.Drawing.Size(173, 424);
+            this.Grocery_List.Size = new System.Drawing.Size(496, 445);
             this.Grocery_List.TabIndex = 0;
             // 
             // printDocument1
@@ -121,6 +127,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(523, 507);
             this.Controls.Add(this.panel1);
             this.MaximumSize = new System.Drawing.Size(539, 546);
@@ -141,8 +148,8 @@
         private System.Windows.Forms.Button BtnPrint;
         private System.Windows.Forms.Button BtnAlreadyHave;
         private System.Windows.Forms.Button BtnBack;
-        private System.Windows.Forms.CheckedListBox Grocery_List;
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
+        private System.Windows.Forms.CheckedListBox Grocery_List;
     }
 }

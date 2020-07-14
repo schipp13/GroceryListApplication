@@ -281,11 +281,15 @@ namespace GroceryListApplication {
             
             private global::System.Data.DataColumn columnMealID;
             
+            private global::System.Data.DataColumn columnMealDate;
+            
             private global::System.Data.DataColumn columnMealName;
             
             private global::System.Data.DataColumn columnMealIngredients;
             
             private global::System.Data.DataColumn columnMealInstructions;
+            
+            private global::System.Data.DataColumn columnMealPicture;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -330,6 +334,14 @@ namespace GroceryListApplication {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn MealDateColumn {
+                get {
+                    return this.columnMealDate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn MealNameColumn {
                 get {
                     return this.columnMealName;
@@ -349,6 +361,14 @@ namespace GroceryListApplication {
             public global::System.Data.DataColumn MealInstructionsColumn {
                 get {
                     return this.columnMealInstructions;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn MealPictureColumn {
+                get {
+                    return this.columnMealPicture;
                 }
             }
             
@@ -389,13 +409,15 @@ namespace GroceryListApplication {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public MealInformationRow AddMealInformationRow(string MealName, string MealIngredients, string MealInstructions) {
+            public MealInformationRow AddMealInformationRow(System.DateTime MealDate, string MealName, string MealIngredients, string MealInstructions, byte[] MealPicture) {
                 MealInformationRow rowMealInformationRow = ((MealInformationRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
+                        MealDate,
                         MealName,
                         MealIngredients,
-                        MealInstructions};
+                        MealInstructions,
+                        MealPicture};
                 rowMealInformationRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowMealInformationRow);
                 return rowMealInformationRow;
@@ -426,9 +448,11 @@ namespace GroceryListApplication {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
                 this.columnMealID = base.Columns["MealID"];
+                this.columnMealDate = base.Columns["MealDate"];
                 this.columnMealName = base.Columns["MealName"];
                 this.columnMealIngredients = base.Columns["MealIngredients"];
                 this.columnMealInstructions = base.Columns["MealInstructions"];
+                this.columnMealPicture = base.Columns["MealPicture"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -436,12 +460,16 @@ namespace GroceryListApplication {
             private void InitClass() {
                 this.columnMealID = new global::System.Data.DataColumn("MealID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMealID);
+                this.columnMealDate = new global::System.Data.DataColumn("MealDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMealDate);
                 this.columnMealName = new global::System.Data.DataColumn("MealName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMealName);
                 this.columnMealIngredients = new global::System.Data.DataColumn("MealIngredients", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMealIngredients);
                 this.columnMealInstructions = new global::System.Data.DataColumn("MealInstructions", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMealInstructions);
+                this.columnMealPicture = new global::System.Data.DataColumn("MealPicture", typeof(byte[]), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMealPicture);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnMealID}, true));
                 this.columnMealID.AutoIncrement = true;
@@ -449,7 +477,7 @@ namespace GroceryListApplication {
                 this.columnMealID.AutoIncrementStep = -1;
                 this.columnMealID.AllowDBNull = false;
                 this.columnMealID.Unique = true;
-                this.columnMealName.MaxLength = 536870910;
+                this.columnMealName.MaxLength = 50;
                 this.columnMealIngredients.MaxLength = 536870910;
                 this.columnMealInstructions.MaxLength = 536870910;
             }
@@ -605,6 +633,22 @@ namespace GroceryListApplication {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.DateTime MealDate {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableMealInformation.MealDateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'MealDate\' in table \'MealInformation\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMealInformation.MealDateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string MealName {
                 get {
                     try {
@@ -653,6 +697,34 @@ namespace GroceryListApplication {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public byte[] MealPicture {
+                get {
+                    try {
+                        return ((byte[])(this[this.tableMealInformation.MealPictureColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'MealPicture\' in table \'MealInformation\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMealInformation.MealPictureColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsMealDateNull() {
+                return this.IsNull(this.tableMealInformation.MealDateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetMealDateNull() {
+                this[this.tableMealInformation.MealDateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsMealNameNull() {
                 return this.IsNull(this.tableMealInformation.MealNameColumn);
             }
@@ -685,6 +757,18 @@ namespace GroceryListApplication {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetMealInstructionsNull() {
                 this[this.tableMealInformation.MealInstructionsColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsMealPictureNull() {
+                return this.IsNull(this.tableMealInformation.MealPictureColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetMealPictureNull() {
+                this[this.tableMealInformation.MealPictureColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -848,32 +932,47 @@ namespace GroceryListApplication.MealDatabaseDataSetTableAdapters {
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "MealInformation";
             tableMapping.ColumnMappings.Add("MealID", "MealID");
+            tableMapping.ColumnMappings.Add("MealDate", "MealDate");
             tableMapping.ColumnMappings.Add("MealName", "MealName");
             tableMapping.ColumnMappings.Add("MealIngredients", "MealIngredients");
             tableMapping.ColumnMappings.Add("MealInstructions", "MealInstructions");
+            tableMapping.ColumnMappings.Add("MealPicture", "MealPicture");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM `MealInformation` WHERE ((`MealID` = ?))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM `MealInformation` WHERE ((`MealID` = ?) AND ((? = 1 AND `MealDate` IS" +
+                " NULL) OR (`MealDate` = ?)) AND ((? = 1 AND `MealName` IS NULL) OR (`MealName` =" +
+                " ?)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_MealID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "MealID", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_MealDate", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "MealDate", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_MealDate", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "MealDate", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_MealName", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "MealName", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_MealName", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "MealName", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.InsertCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO `MealInformation` (`MealName`, `MealIngredients`, `MealInstructions`)" +
-                " VALUES (?, ?, ?)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO `MealInformation` (`MealDate`, `MealName`, `MealIngredients`, `MealIn" +
+                "structions`, `MealPicture`) VALUES (?, ?, ?, ?, ?)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("MealName", global::System.Data.OleDb.OleDbType.LongVarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "MealName", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("MealDate", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "MealDate", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("MealName", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "MealName", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("MealIngredients", global::System.Data.OleDb.OleDbType.LongVarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "MealIngredients", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("MealInstructions", global::System.Data.OleDb.OleDbType.LongVarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "MealInstructions", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("MealPicture", global::System.Data.OleDb.OleDbType.LongVarBinary, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "MealPicture", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE `MealInformation` SET `MealName` = ?, `MealIngredients` = ?, `MealInstruct" +
-                "ions` = ? WHERE ((`MealID` = ?))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE `MealInformation` SET `MealDate` = ?, `MealName` = ?, `MealIngredients` = ?, `MealInstructions` = ?, `MealPicture` = ? WHERE ((`MealID` = ?) AND ((? = 1 AND `MealDate` IS NULL) OR (`MealDate` = ?)) AND ((? = 1 AND `MealName` IS NULL) OR (`MealName` = ?)))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("MealName", global::System.Data.OleDb.OleDbType.LongVarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "MealName", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("MealDate", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "MealDate", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("MealName", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "MealName", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("MealIngredients", global::System.Data.OleDb.OleDbType.LongVarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "MealIngredients", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("MealInstructions", global::System.Data.OleDb.OleDbType.LongVarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "MealInstructions", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("MealPicture", global::System.Data.OleDb.OleDbType.LongVarBinary, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "MealPicture", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_MealID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "MealID", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_MealDate", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "MealDate", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_MealDate", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "MealDate", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_MealName", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "MealName", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_MealName", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "MealName", global::System.Data.DataRowVersion.Original, false, null));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -889,7 +988,8 @@ namespace GroceryListApplication.MealDatabaseDataSetTableAdapters {
             this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT MealID, MealName, MealIngredients, MealInstructions FROM MealInformation";
+            this._commandCollection[0].CommandText = "SELECT MealID, MealDate, MealName, MealIngredients, MealInstructions, MealPicture" +
+                " FROM MealInformation";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -950,8 +1050,24 @@ namespace GroceryListApplication.MealDatabaseDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_MealID) {
+        public virtual int Delete(int Original_MealID, global::System.Nullable<global::System.DateTime> Original_MealDate, string Original_MealName) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_MealID));
+            if ((Original_MealDate.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((System.DateTime)(Original_MealDate.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            if ((Original_MealName == null)) {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_MealName));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -972,24 +1088,36 @@ namespace GroceryListApplication.MealDatabaseDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string MealName, string MealIngredients, string MealInstructions) {
-            if ((MealName == null)) {
-                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
+        public virtual int Insert(global::System.Nullable<global::System.DateTime> MealDate, string MealName, string MealIngredients, string MealInstructions, byte[] MealPicture) {
+            if ((MealDate.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((System.DateTime)(MealDate.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(MealName));
+                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
-            if ((MealIngredients == null)) {
+            if ((MealName == null)) {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(MealIngredients));
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(MealName));
             }
-            if ((MealInstructions == null)) {
+            if ((MealIngredients == null)) {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(MealInstructions));
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(MealIngredients));
+            }
+            if ((MealInstructions == null)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(MealInstructions));
+            }
+            if ((MealPicture == null)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((byte[])(MealPicture));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1011,26 +1139,54 @@ namespace GroceryListApplication.MealDatabaseDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string MealName, string MealIngredients, string MealInstructions, int Original_MealID) {
-            if ((MealName == null)) {
-                this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
+        public virtual int Update(global::System.Nullable<global::System.DateTime> MealDate, string MealName, string MealIngredients, string MealInstructions, byte[] MealPicture, int Original_MealID, global::System.Nullable<global::System.DateTime> Original_MealDate, string Original_MealName) {
+            if ((MealDate.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((System.DateTime)(MealDate.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(MealName));
+                this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
-            if ((MealIngredients == null)) {
+            if ((MealName == null)) {
                 this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(MealIngredients));
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(MealName));
             }
-            if ((MealInstructions == null)) {
+            if ((MealIngredients == null)) {
                 this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(MealInstructions));
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(MealIngredients));
             }
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_MealID));
+            if ((MealInstructions == null)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(MealInstructions));
+            }
+            if ((MealPicture == null)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((byte[])(MealPicture));
+            }
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_MealID));
+            if ((Original_MealDate.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((System.DateTime)(Original_MealDate.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            if ((Original_MealName == null)) {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_MealName));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {

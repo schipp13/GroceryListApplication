@@ -37,12 +37,12 @@
             this.mealInstructionsTextBox = new System.Windows.Forms.TextBox();
             this.lblRecipeInstructions = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.mealPicturePictureBox = new System.Windows.Forms.PictureBox();
             this.mealNameTextBox = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.lblIngredients = new System.Windows.Forms.Label();
             this.mealIngredientsTextBox = new System.Windows.Forms.TextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.mealPicturePictureBox = new System.Windows.Forms.PictureBox();
             this.mealDatabaseDataSet1 = new GroceryListApplication.MealDatabaseDataSet();
             this.mealInformationTableAdapter1 = new GroceryListApplication.MealDatabaseDataSetTableAdapters.MealInformationTableAdapter();
             this.tableAdapterManager1 = new GroceryListApplication.MealDatabaseDataSetTableAdapters.TableAdapterManager();
@@ -50,14 +50,15 @@
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mealPicturePictureBox)).BeginInit();
+            this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mealDatabaseDataSet1)).BeginInit();
             this.SuspendLayout();
             // 
             // mealNameLabel
             // 
             mealNameLabel.AutoSize = true;
+            mealNameLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             mealNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             mealNameLabel.Location = new System.Drawing.Point(3, 8);
             mealNameLabel.Name = "mealNameLabel";
@@ -67,6 +68,7 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.Gray;
             this.panel1.Controls.Add(this.btnAddImage);
             this.panel1.Controls.Add(this.BtnAddMeal);
             this.panel1.Controls.Add(this.BtnBack);
@@ -77,17 +79,19 @@
             // 
             // btnAddImage
             // 
+            this.btnAddImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnAddImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnAddImage.Location = new System.Drawing.Point(200, 0);
             this.btnAddImage.Name = "btnAddImage";
             this.btnAddImage.Size = new System.Drawing.Size(99, 29);
             this.btnAddImage.TabIndex = 2;
             this.btnAddImage.Text = "Add Image";
-            this.btnAddImage.UseVisualStyleBackColor = true;
+            this.btnAddImage.UseVisualStyleBackColor = false;
             this.btnAddImage.Click += new System.EventHandler(this.btnAddImage_Click);
             // 
             // BtnAddMeal
             // 
+            this.BtnAddMeal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.BtnAddMeal.Enabled = false;
             this.BtnAddMeal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnAddMeal.Location = new System.Drawing.Point(386, 0);
@@ -95,18 +99,19 @@
             this.BtnAddMeal.Size = new System.Drawing.Size(109, 28);
             this.BtnAddMeal.TabIndex = 1;
             this.BtnAddMeal.Text = "Add Meal";
-            this.BtnAddMeal.UseVisualStyleBackColor = true;
+            this.BtnAddMeal.UseVisualStyleBackColor = false;
             this.BtnAddMeal.Click += new System.EventHandler(this.BtnAddMeal_Click);
             // 
             // BtnBack
             // 
+            this.BtnBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.BtnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnBack.Location = new System.Drawing.Point(3, 0);
             this.BtnBack.Name = "BtnBack";
             this.BtnBack.Size = new System.Drawing.Size(99, 28);
             this.BtnBack.TabIndex = 0;
             this.BtnBack.Text = "<-- Back";
-            this.BtnBack.UseVisualStyleBackColor = true;
+            this.BtnBack.UseVisualStyleBackColor = false;
             this.BtnBack.Click += new System.EventHandler(this.BtnBack_Click);
             // 
             // panel2
@@ -120,6 +125,7 @@
             // 
             // mealInstructionsTextBox
             // 
+            this.mealInstructionsTextBox.BackColor = System.Drawing.Color.Silver;
             this.mealInstructionsTextBox.Enabled = false;
             this.mealInstructionsTextBox.Location = new System.Drawing.Point(3, 28);
             this.mealInstructionsTextBox.Multiline = true;
@@ -150,8 +156,18 @@
             this.panel3.Size = new System.Drawing.Size(263, 256);
             this.panel3.TabIndex = 2;
             // 
+            // mealPicturePictureBox
+            // 
+            this.mealPicturePictureBox.Location = new System.Drawing.Point(6, 33);
+            this.mealPicturePictureBox.Name = "mealPicturePictureBox";
+            this.mealPicturePictureBox.Size = new System.Drawing.Size(240, 217);
+            this.mealPicturePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.mealPicturePictureBox.TabIndex = 4;
+            this.mealPicturePictureBox.TabStop = false;
+            // 
             // mealNameTextBox
             // 
+            this.mealNameTextBox.BackColor = System.Drawing.Color.Silver;
             this.mealNameTextBox.Location = new System.Drawing.Point(92, 8);
             this.mealNameTextBox.Name = "mealNameTextBox";
             this.mealNameTextBox.Size = new System.Drawing.Size(151, 20);
@@ -170,6 +186,7 @@
             // lblIngredients
             // 
             this.lblIngredients.AutoSize = true;
+            this.lblIngredients.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.lblIngredients.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIngredients.Location = new System.Drawing.Point(77, 6);
             this.lblIngredients.Name = "lblIngredients";
@@ -180,6 +197,7 @@
             // 
             // mealIngredientsTextBox
             // 
+            this.mealIngredientsTextBox.BackColor = System.Drawing.Color.Silver;
             this.mealIngredientsTextBox.Enabled = false;
             this.mealIngredientsTextBox.Location = new System.Drawing.Point(4, 33);
             this.mealIngredientsTextBox.Multiline = true;
@@ -192,15 +210,6 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // mealPicturePictureBox
-            // 
-            this.mealPicturePictureBox.Location = new System.Drawing.Point(6, 34);
-            this.mealPicturePictureBox.Name = "mealPicturePictureBox";
-            this.mealPicturePictureBox.Size = new System.Drawing.Size(240, 217);
-            this.mealPicturePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.mealPicturePictureBox.TabIndex = 4;
-            this.mealPicturePictureBox.TabStop = false;
             // 
             // mealDatabaseDataSet1
             // 
@@ -222,6 +231,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
+            this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(518, 528);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
@@ -237,9 +247,9 @@
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mealPicturePictureBox)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.mealPicturePictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mealDatabaseDataSet1)).EndInit();
             this.ResumeLayout(false);
 

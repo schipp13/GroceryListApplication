@@ -2,22 +2,22 @@
 // Date last modified: 7/12/2020
 
 using System;
-using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.OleDb;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.OleDb;
-using System.Drawing.Imaging;
 
 namespace GroceryListApplication
 {
     public partial class NewMeal : Form
-    {
+    { 
         // Creates a connection to the database
         OleDbConnection cn = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\saich\Desktop\C# Practice\GroceryList\GroceryListApplication\GroceryListApplication\MealDataBase.mdb");
         OleDbCommand cmd;
@@ -37,18 +37,18 @@ namespace GroceryListApplication
             ClearForm();
         }
 
-     
         private void BtnAddMeal_Click(object sender, EventArgs e)
         {
+            
             // Inserts meal into the database
             cmd = cn.CreateCommand();
-            cmd.CommandText = "INSERT INTO MealInformation(MealName,MealIngredients,MealInstructions,MealPicture)Values('" + mealNameTextBox.Text + "','" + mealIngredientsTextBox.Text + "','" + mealInstructionsTextBox.Text + "','" + mealPicturePictureBox + "')";
+            cmd.CommandText = "INSERT INTO MealInformation(MealName,MealIngredients,MealInstructions,MealPicture)Values('" + mealNameTextBox.Text + "','" + mealIngredientsTextBox.Text + "','" + mealInstructionsTextBox.Text + "','" + mealPicturePictureBox.Image + "')";
             cmd.Connection = cn;
             conv_photo();
             cmd.ExecuteNonQuery();
-
             // Clears the form
             ClearForm();
+
         }
 
         private void btnAddImage_Click(object sender, EventArgs e)
@@ -60,7 +60,6 @@ namespace GroceryListApplication
             {
                mealPicturePictureBox.Image = Image.FromFile(openFileDialog1.FileName);
             }
-
         }
 
         void conv_photo()

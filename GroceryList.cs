@@ -12,20 +12,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Data.OleDb;
 
 namespace GroceryListApplication
 {
+
     public partial class GroceryList : Form
     {
+        public static ComboBox MealIngredients = new ComboBox();
         string docPath = @"C:\Users\saich\Desktop\C# Practice\GroceryList\GroceryListApplication\";
         private string stringToPrint;
 
         public GroceryList()
         {
             InitializeComponent();
-            // Assign ingredients from added meals from the calendar
-            
+            // Adds meal ingredients into list           
+            foreach (string i in MealIngredients.Items)
+            {
+                Grocery_List.Items.Add(i);
+            }
 
         }
 

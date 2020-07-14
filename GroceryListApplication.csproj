@@ -190,6 +190,7 @@
     <Reference Include="Zstandard.Net, Version=1.1.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Event.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -202,10 +203,10 @@
     <Compile Include="GroceryList.Designer.cs">
       <DependentUpon>GroceryList.cs</DependentUpon>
     </Compile>
-    <Compile Include="MealDatabaseDataSet1.Designer.cs">
+    <Compile Include="MealDatabaseDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MealDatabaseDataSet1.xsd</DependentUpon>
+      <DependentUpon>MealDatabaseDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="NewMeal.cs">
       <SubType>Form</SubType>
@@ -245,16 +246,16 @@
     <None Include="credentials.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="MealDatabaseDataSet1.xsc">
-      <DependentUpon>MealDatabaseDataSet1.xsd</DependentUpon>
+    <None Include="MealDatabaseDataSet.xsc">
+      <DependentUpon>MealDatabaseDataSet.xsd</DependentUpon>
     </None>
-    <None Include="MealDatabaseDataSet1.xsd">
+    <None Include="MealDatabaseDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>MealDatabaseDataSet1.Designer.cs</LastGenOutput>
+      <LastGenOutput>MealDatabaseDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="MealDatabaseDataSet1.xss">
-      <DependentUpon>MealDatabaseDataSet1.xsd</DependentUpon>
+    <None Include="MealDatabaseDataSet.xss">
+      <DependentUpon>MealDatabaseDataSet.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

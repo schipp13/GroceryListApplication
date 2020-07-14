@@ -1,4 +1,6 @@
-﻿namespace GroceryListApplication
+﻿using System;
+
+namespace GroceryListApplication
 {
     partial class Form1
     {
@@ -45,21 +47,18 @@
             this.lblMonth = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.FlDays = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label2 = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.lightThemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.darkThemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            this.FlDays.SuspendLayout();
-            this.flowLayoutPanel2.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.Black;
             this.groupBox1.Controls.Add(this.panel1);
             this.groupBox1.Controls.Add(this.btnGroceryList);
             this.groupBox1.Controls.Add(this.BtnCreateMeal);
@@ -67,15 +66,15 @@
             this.groupBox1.Controls.Add(this.BtnNextMonth);
             this.groupBox1.Controls.Add(this.lblMonth);
             this.groupBox1.Controls.Add(this.groupBox4);
-            this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.groupBox1.Location = new System.Drawing.Point(7, 27);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(872, 604);
+            this.groupBox1.Size = new System.Drawing.Size(873, 604);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.label8);
@@ -84,6 +83,7 @@
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
+            this.panel1.ForeColor = System.Drawing.Color.Black;
             this.panel1.Location = new System.Drawing.Point(50, 75);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(771, 32);
@@ -161,52 +161,62 @@
             // 
             // btnGroceryList
             // 
+            this.btnGroceryList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnGroceryList.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGroceryList.ForeColor = System.Drawing.Color.Black;
             this.btnGroceryList.Location = new System.Drawing.Point(664, 22);
             this.btnGroceryList.Name = "btnGroceryList";
             this.btnGroceryList.Size = new System.Drawing.Size(129, 32);
             this.btnGroceryList.TabIndex = 2;
             this.btnGroceryList.Text = "Grocery List";
-            this.btnGroceryList.UseVisualStyleBackColor = true;
+            this.btnGroceryList.UseVisualStyleBackColor = false;
             this.btnGroceryList.Click += new System.EventHandler(this.btnGroceryList_Click);
             // 
             // BtnCreateMeal
             // 
+            this.BtnCreateMeal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.BtnCreateMeal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnCreateMeal.ForeColor = System.Drawing.Color.Black;
             this.BtnCreateMeal.Location = new System.Drawing.Point(530, 22);
             this.BtnCreateMeal.Name = "BtnCreateMeal";
             this.BtnCreateMeal.Size = new System.Drawing.Size(128, 32);
             this.BtnCreateMeal.TabIndex = 1;
             this.BtnCreateMeal.Text = "Create Meal";
-            this.BtnCreateMeal.UseVisualStyleBackColor = true;
+            this.BtnCreateMeal.UseVisualStyleBackColor = false;
             this.BtnCreateMeal.Click += new System.EventHandler(this.BtnCreateMeal_Click);
             // 
             // BtnPreviousMonth
             // 
+            this.BtnPreviousMonth.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.BtnPreviousMonth.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnPreviousMonth.ForeColor = System.Drawing.Color.Black;
             this.BtnPreviousMonth.Location = new System.Drawing.Point(11, 151);
             this.BtnPreviousMonth.Name = "BtnPreviousMonth";
             this.BtnPreviousMonth.Size = new System.Drawing.Size(33, 353);
             this.BtnPreviousMonth.TabIndex = 1;
             this.BtnPreviousMonth.Text = "<";
-            this.BtnPreviousMonth.UseVisualStyleBackColor = true;
+            this.BtnPreviousMonth.UseVisualStyleBackColor = false;
             this.BtnPreviousMonth.Click += new System.EventHandler(this.btnPreviousMonth_Click);
             // 
             // BtnNextMonth
             // 
+            this.BtnNextMonth.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.BtnNextMonth.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnNextMonth.ForeColor = System.Drawing.Color.Black;
             this.BtnNextMonth.Location = new System.Drawing.Point(827, 151);
             this.BtnNextMonth.Name = "BtnNextMonth";
             this.BtnNextMonth.Size = new System.Drawing.Size(33, 353);
             this.BtnNextMonth.TabIndex = 2;
             this.BtnNextMonth.Text = ">";
-            this.BtnNextMonth.UseVisualStyleBackColor = true;
+            this.BtnNextMonth.UseVisualStyleBackColor = false;
             this.BtnNextMonth.Click += new System.EventHandler(this.btnNextMonth_Click);
             // 
             // lblMonth
             // 
             this.lblMonth.AutoSize = true;
+            this.lblMonth.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.lblMonth.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMonth.ForeColor = System.Drawing.Color.Black;
             this.lblMonth.Location = new System.Drawing.Point(52, 17);
             this.lblMonth.Name = "lblMonth";
             this.lblMonth.Size = new System.Drawing.Size(73, 37);
@@ -224,29 +234,11 @@
             // 
             // FlDays
             // 
-            this.FlDays.Controls.Add(this.flowLayoutPanel2);
+            this.FlDays.BackColor = System.Drawing.Color.Gray;
             this.FlDays.Location = new System.Drawing.Point(6, 57);
             this.FlDays.Name = "FlDays";
             this.FlDays.Size = new System.Drawing.Size(771, 485);
             this.FlDays.TabIndex = 8;
-            // 
-            // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.BackColor = System.Drawing.Color.White;
-            this.flowLayoutPanel2.Controls.Add(this.label2);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 3);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(99, 69);
-            this.flowLayoutPanel2.TabIndex = 9;
-            // 
-            // label2
-            // 
-            this.label2.Location = new System.Drawing.Point(3, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(96, 23);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "1";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // contextMenuStrip1
             // 
@@ -272,10 +264,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(889, 642);
+            this.BackColor = System.Drawing.Color.Black;
+            this.ClientSize = new System.Drawing.Size(897, 628);
             this.Controls.Add(this.groupBox1);
-            this.MaximumSize = new System.Drawing.Size(905, 681);
-            this.MinimumSize = new System.Drawing.Size(905, 681);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximumSize = new System.Drawing.Size(913, 667);
+            this.MinimumSize = new System.Drawing.Size(913, 667);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Grocery List Application";
@@ -285,12 +279,11 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.groupBox4.ResumeLayout(false);
-            this.FlDays.ResumeLayout(false);
-            this.flowLayoutPanel2.ResumeLayout(false);
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
+
 
         #endregion
 
@@ -310,8 +303,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.FlowLayoutPanel FlDays;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem lightThemeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem darkThemeToolStripMenuItem;

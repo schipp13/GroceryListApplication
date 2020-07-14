@@ -10,27 +10,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.OleDb;
+using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
-using DateTime = System.DateTime;
-using System.Runtime.InteropServices;
-using Google.Apis.Calendar.v3.Data;
+using System.Data.OleDb;
 
 namespace GroceryListApplication
 {
+  
     public partial class SelectMealMessage : Form
     {
+        // Global Variables
+        Event @event = new Event();
+        public static string selectedMeal;
+        public static string meals;
 
-        public List<FlowLayoutPanel> listFLDay = new List<FlowLayoutPanel>();
-        private DateTime currentDate = DateTime.Today;
-        Event @meal = new Event();
+        public int AppID = 0;
+        OleDbConnection cn = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\saich\Desktop\C# Practice\GroceryList\GroceryListApplication\GroceryListApplication\MealDatabase.mdb");
+        OleDbCommand cmd;
         public SelectMealMessage()
         {
             InitializeComponent();
 
             // Grabs meal names and adds them to the combo box
-            OleDbConnection cn = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\saich\Desktop\C# Practice\GroceryList\GroceryListApplication\GroceryListApplication\MealDataBase.mdb");
-            OleDbCommand cmd;
             cn.Open();
             cmd = cn.CreateCommand();
             cmd.CommandText = "SELECT MealName FROM MealInformation";
@@ -41,8 +43,56 @@ namespace GroceryListApplication
             while (drd.Read())
             {
                 mealNameComboBox.Items.Add(drd["MealName"].ToString());
-
             }
+            cn.Close();
+
+            
+
+        }
+
+        // Get the ingredients for grocerylist array
+        public void  getIngredients()
+        {
+            List<string> Ingredients = new List<string>();
+            cn.Open();
+            cmd = cn.CreateCommand();
+            cmd.CommandText = "SELECT MealIngredients FROM MealInformation Where MealName = @meal";
+            cmd.Parameters.AddWithValue("@meal", mealNameComboBox.Text);
+            cmd.Connection = cn;
+            cmd.ExecuteNonQuery();
+
+            OleDbDataReader drd = cmd.ExecuteReader();
+            for(int i = 0; i <= mealNameComboBox.Items.Count; i++)
+            {
+                while (drd.Read())
+                {
+                    GroceryList.MealIngredients.Items.Add(drd["MealIngredients"].ToString());
+                }
+            }
+
+            cn.Close();
+            
+        }
+
+
+        //SETTERS AND GETTERS
+
+        public DateTime DatePicker
+        {
+            set { mealDateDateTimePicker.Value = value; }
+            get { return mealDateDateTimePicker.Value; }
+        }
+
+        public int ID
+        {
+            set { AppID = value; }
+            get { return AppID; }
+        }
+     
+        private void SelectMealMessage_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'mealDatabaseDataSet.MealInformation' table. You can move, or remove it, as needed.
+            this.mealInformationTableAdapter.Fill(this.mealDatabaseDataSet.MealInformation);
         }
 
         private void mealInformationBindingNavigatorSaveItem_Click(object sender, EventArgs e)
@@ -50,48 +100,23 @@ namespace GroceryListApplication
             this.Validate();
             this.mealInformationBindingSource.EndEdit();
             this.tableAdapterManager.UpdateAll(this.mealDatabaseDataSet);
-
         }
 
-        private void SelectMealMessage_Load(object sender, EventArgs e)
+        public void BtnSubmitMeal_Click(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'mealDatabaseDataSet.MealInformation' table. You can move, or remove it, as needed.
-            this.mealInformationTableAdapter.Fill(this.mealDatabaseDataSet.MealInformation);
-
+            getIngredients();
+            selectedMeal = mealNameComboBox.SelectedItem.ToString();
+            // Update the Date where MealName = SelectedMeal 
+            cn.Open();
+            cmd = cn.CreateCommand();
+            cmd.CommandText = "Update MealInformation SET MealDate = @SelectedDate Where MealName = @SelectedMeal";
+            cmd.Parameters.AddWithValue("@SelectedDate", mealDateDateTimePicker.Value);
+            cmd.Parameters.AddWithValue("@SelectedMeal", mealNameComboBox.Text);
+            cmd.Connection = cn;
+            cmd.ExecuteNonQuery();
+            cn.Close();
         }
-
-        private void BtnSubmitMeal_Click(object sender, EventArgs e)
-        {
-            AddAppointmentToFlDay();
-
-        }
-     
-
-        private void AddAppointmentToFlDay(int startDayAtFlNumber)
-        {
-
-     
-       // Creates the Meal for each day in the month
-                DateTime startDate = new DateTime(currentDate.Year, currentDate.Month, 1);
-                DateTime endDate = startDate.AddMonths(1).AddDays(-1);
-
-                string sql = $"select * from calendar where startDate between '{startDate.ToShortDateString()}' and '{endDate.ToShortDateString()}'";
-                DataTable dt = @meal.QueryAsDataTable(sql);
-
-                foreach (DataRow dr in dt.Rows)
-                {
-                    DateTime appday = DateTime.Parse(dr["startDate"].ToString());
-                    var link = new LinkLabel();
-                    link.Tag = dr["id"].ToString();
-                    link.Name = $"link{dr["id"]}";
-                    link.Text = dr["Title"].ToString();
-                    link.BackColor = Color.FromName(dr["color"].ToString());
-                    link.LinkColor = Color.White;
-                    link.AutoSize = true;
-                    listFLDay[(appday.Day - 1) + (startDayAtFlNumber - 1)].Controls.Add(link);
-                }
-
-            }
+       
         private void BtnClose_Click(object sender, EventArgs e)
         {
             // Closes the popup
